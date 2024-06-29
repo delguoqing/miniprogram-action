@@ -28,6 +28,7 @@ async function preview(context: ActionContext): Promise<void> {
     scene,
     allowIgnoreUnusedFiles: context.allowIgnoreUnusedFiles,
     onProgressUpdate,
+    useCOS: false
   });
 
   const base64 = await fs.promises.readFile(tempImagePath, 'utf-8');
