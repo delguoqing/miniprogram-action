@@ -22,9 +22,22 @@ export function readProjectConfig(rootPath: string): ProjectConfig {
 }
 
 export function createProject(rootPath: string, projectConfig: ProjectConfig): Project {
+  let projectType: 'miniGame' | 'miniProgram' | 'miniProgramPlugin' | 'miniGamePlugin' = 'miniGame';
+  if (projectConfig.compileType == 'miniprogram') {
+    projectType = 'miniProgram';
+  } else if (projectConfig.compileType == 'game') {
+    projectType = 'miniGame';
+  } else if (projectConfig.compileType == 'plugin') {
+    projectType = 'miniProgramPlugin';
+  } else if (projectConfig.compileType == 'gamePlugin') {
+    projectType = 'miniGamePlugin';
+  } else {
+    throw new Error("不支持的projectType");
+  }
+
   return {
     appid: projectConfig.appid,
-    type: projectConfig.compileType === 'miniprogram' ? 'miniProgram' : 'miniProgramPlugin',
+    type: projectType,
     projectPath: getMiniProgramRootPath(rootPath, projectConfig.miniprogramRoot),
     privateKey: process.env.PRIVATE_KEY || '',
     ignores: ['node_modules/**/*'],

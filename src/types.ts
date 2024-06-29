@@ -34,7 +34,7 @@ export interface ProjectConfig {
   projectname: string;
   libVersion: string;
   miniprogramRoot?: string;
-  compileType?: 'miniprogram' | 'plugin';
+  compileType?: 'miniprogram' | 'plugin' | 'game' | 'gamePlugin';
   setting: CompileOptions;
   ignoreUploadUnusedFiles: boolean;
 }
