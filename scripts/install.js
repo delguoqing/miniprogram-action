@@ -7,6 +7,6 @@ function exec(command) {
   });
 }
 
-exec('npm install pnpm@8 -g');
 exec('npm install babel-core babel-loader --save-dev')
+exec('npm install pnpm@8 -g');
 exec('pnpm install --frozen-lockfile');
