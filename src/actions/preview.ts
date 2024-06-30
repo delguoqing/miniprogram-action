@@ -18,7 +18,9 @@ async function preview(context: ActionContext): Promise<void> {
     project,
     version: context.version,
     desc: context.description,
-    setting: context.compileOptions,
+    setting: {
+      useProjectConfig: true
+    },
     robot: context.robot,
     threads: context.threads,
     qrcodeFormat: 'base64',
