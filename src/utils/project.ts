@@ -40,7 +40,7 @@ export function createProject(rootPath: string, projectConfig: ProjectConfig): P
     type: projectType,
     projectPath: getMiniProgramRootPath(rootPath, projectConfig.miniprogramRoot),
     privateKey: process.env.PRIVATE_KEY || '',
-    ignores: ['node_modules/**/*'],
+    ignores: ['node_modules/**/*', 'levels/images/**/*'],
   };
 }
 
