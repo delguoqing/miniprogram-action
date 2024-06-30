@@ -6,4 +6,4 @@ require('ts-node').register({
 
 const { activate } = require('../src/index');
 
-activate();
+await activate();
