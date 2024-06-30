@@ -29,6 +29,5 @@ export function getCompileOptions(options: CompileOptions): CICompileOptions {
 }
 
 export function onProgressUpdate(message: string | TaskStatus): void {
-  console.log("hey ");
   console.log(typeof message === 'object' ? message.message + ' ' + message.status : message);
 }

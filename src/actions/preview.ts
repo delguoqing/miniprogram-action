@@ -30,18 +30,12 @@ async function preview(context: ActionContext): Promise<void> {
     scene,
     allowIgnoreUnusedFiles: context.allowIgnoreUnusedFiles,
     onProgressUpdate,
-    useCOS: false
   });
 
-  core.info("done preview")
-
-  core.info("reading qrcode")
   const base64 = await fs.promises.readFile(tempImagePath, 'utf-8');
-  core.info("done reading qrcode")
 
   core.setOutput('preview_qrcode', base64);
   core.setOutput('preview_qrcode_path', tempImagePath);
-  core.info("done setting output")
 }
 
 export default preview;

@@ -31,12 +31,8 @@ export async function activate(): Promise<void> {
       await actions.npm(context);
     }
 
-    core.info("action start!")
     await actions[actionType](context);
-    core.info("action end!");
   } catch (error) {
     core.setFailed(error);
   }
-
-  core.info("activate end");
 }
