@@ -2,6 +2,8 @@ import * as ci from 'miniprogram-ci';
 import * as core from '@actions/core';
 import { onProgressUpdate } from '../utils/context';
 import type { ActionContext } from '../types';
+import * as os from 'os';
+import * as path from 'path';
 
 async function upload(context: ActionContext): Promise<void> {
   const project = new ci.Project(context.project);
@@ -18,6 +20,16 @@ async function upload(context: ActionContext): Promise<void> {
     allowIgnoreUnusedFiles: context.allowIgnoreUnusedFiles,
     onProgressUpdate,
   });
+
+  const tempImagePath = path.join(os.tmpdir(), 'sm.zip');
+
+  await ci.getDevSourceMap({
+    project,
+    robot: context.robot,
+    sourceMapSavePath: tempImagePath
+  });
+
+  core.setOutput('sourcemap_path', tempImagePath);
 }
 
 export default upload;
